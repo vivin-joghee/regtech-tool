@@ -1,0 +1,14 @@
+pandas>=2.2
+numpy>=2.1
+pyarrow>=18
+faker>=24
+python-dateutil>=2.9
+psycopg[binary]>=3.1,<4
+python-dotenv>=1.0,<2
+# ML training pipeline
+lightgbm>=4.5
+scikit-learn>=1.5
+shap>=0.46
+# ONNX export (optional — script falls back gracefully if these can't install)
+onnxmltools>=1.12
+onnx>=1.16

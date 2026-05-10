@@ -1,0 +1,66 @@
+# Strait Compliance — United States rule pack
+# Examiner-readable, git-versioned. Every alert in Postgres records the SHA
+# of this file at scoring time so a rule change is always traceable.
+
+jurisdiction: US
+schema_version: 1
+human_label: "United States — BSA / PATRIOT Act / AMLA 2020"
+authority: FinCEN
+prudential_examiners: [OCC, FRB, FDIC]
+statute:
+  - "Bank Secrecy Act (31 U.S.C. § 5311 et seq.)"
+  - "USA PATRIOT Act §312, §326"
+  - "Anti-Money Laundering Act of 2020"
+
+# Sanctions screening — OFAC SDN is the primary list. Extraterritorial
+# reach via USD clearing is handled at the in-scope-jurisdictions
+# computation step (see worker/src/rules/types.ts), not here.
+sanctions:
+  primary_list: OFAC_SDN
+  triggers_verdict: block
+
+# Currency Transaction Report — FinCEN Form 112, threshold $10K cash.
+currency_transaction:
+  threshold_native: 10000
+  native_currency: USD
+  triggers_verdict: flag
+  rule_id: "US.CTR.10K"
+  citation: "31 CFR §1010.311"
+
+# Suspicious Activity Report — FinCEN Form 111. Below the SAR floor,
+# suspicion alone is not actionable; above it, suspicion drives a SAR.
+suspicious_activity:
+  threshold_native: 5000
+  native_currency: USD
+  triggers_verdict: flag
+  rule_id: "US.SAR.5K"
+  citation: "31 CFR §1020.320"
+
+# PEP scope — US AML rules require enhanced due diligence on Senior
+# Foreign Political Figures. Domestic PEPs are not formally in scope.
+pep:
+  scope: foreign_only
+  triggers_verdict: flag
+  rule_id: "US.PEP.FOREIGN"
+  citation: "31 CFR §1010.605"
+
+# ML score — the rule engine treats the LightGBM scorer as one rule
+# among many. Threshold is intentionally NOT pinned here — the engine reads
+# the auto-tuned `decision_threshold` from the model card so a re-trained
+# model rolls forward without a YAML edit. The model SHA pinned on every
+# alert is what binds the alert to the threshold actually applied.
+# Add `threshold: <value>` here only as a deliberate per-jurisdiction
+# override (e.g. if calibration analysis warrants it).
+ml_score:
+  triggers_verdict: flag
+  rule_id: "US.ML.THRESHOLD"
+
+# AI governance — OCC Bulletin 2026-13 (Apr 2026). GenAI / agentic AI
+# explicitly excluded from the framework. We use neither in this tool.
+ai_governance:
+  framework: "OCC Bulletin 2026-13"
+  genai_excluded_from_mrm: true
+  effective_date: 2026-04-17
+
+# Direction-of-travel marker for the dashboard's regime-status panel.
+direction_of_travel_2026: mixed

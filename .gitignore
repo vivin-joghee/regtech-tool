@@ -1,0 +1,43 @@
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+.dev.vars
+*.secret
+
+# Cloudflare
+.wrangler/
+.mf/
+wrangler.toml.local
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+.turbo/
+coverage/
+*.log
+
+# Python (for offline pipeline)
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Model artifacts (uploaded to R2, not committed)
+data/*.parquet
+data/*.csv
+models/*.onnx
+models/shap_cache.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp

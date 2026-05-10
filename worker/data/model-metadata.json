@@ -1,0 +1,212 @@
+{
+  "model_sha256": "2b2f9f75808a6500a878297d08114343247133d8a98f0074caa8a8353fd6bfff",
+  "model_type": "lightgbm_binary",
+  "trained_at": "2026-05-10T11:59:41.304883+00:00",
+  "n_train": 600,
+  "n_test": 200,
+  "best_iteration": 56,
+  "features": [
+    "amount_usd_log",
+    "originator_risk_rating",
+    "beneficiary_risk_rating",
+    "velocity_24h_count",
+    "velocity_24h_amount",
+    "velocity_7d_count",
+    "velocity_7d_amount",
+    "n_jurisdictions_in_scope",
+    "amount_just_under_us_ctr",
+    "amount_just_under_sg_ctr",
+    "is_cross_border",
+    "is_usd_swift_xb",
+    "ofac_sdn_match",
+    "mas_tfs_match",
+    "originator_is_shell",
+    "beneficiary_is_shell",
+    "pep_originator_foreign",
+    "pep_originator_domestic",
+    "pep_beneficiary_foreign",
+    "pep_beneficiary_domestic",
+    "currency_USD",
+    "currency_SGD",
+    "channel_FAST",
+    "channel_GIRO",
+    "channel_SWIFT",
+    "channel_CHIPS",
+    "channel_FEDWIRE",
+    "channel_ACH",
+    "channel_CASH_USD",
+    "channel_CASH_SGD",
+    "originator_domicile_SG",
+    "originator_domicile_US",
+    "originator_domicile_ID",
+    "originator_domicile_PH",
+    "originator_domicile_IR",
+    "originator_domicile_KP",
+    "originator_domicile_VE",
+    "originator_domicile_CU",
+    "originator_domicile_MY",
+    "originator_domicile_RU",
+    "originator_domicile_SY",
+    "beneficiary_domicile_SG",
+    "beneficiary_domicile_US",
+    "beneficiary_domicile_ID",
+    "beneficiary_domicile_PH",
+    "beneficiary_domicile_IR",
+    "beneficiary_domicile_KP",
+    "beneficiary_domicile_VE",
+    "beneficiary_domicile_CU",
+    "beneficiary_domicile_MY",
+    "beneficiary_domicile_RU",
+    "beneficiary_domicile_SY"
+  ],
+  "metrics": {
+    "decision_threshold": 0.5960186893181209,
+    "roc_auc": 0.9724216524216523,
+    "pr_auc": 0.9532831909855982,
+    "n_test_total": 200,
+    "n_test_positive": 65,
+    "n_predicted_positive": 69,
+    "n_true_positive": 59,
+    "n_false_positive": 10,
+    "n_false_negative": 6,
+    "recall_by_typology": {
+      "10_business_trade": {
+        "n_total": 1,
+        "n_caught": 1,
+        "recall": 1.0
+      },
+      "11_sg_block_risk_based": {
+        "n_total": 9,
+        "n_caught": 4,
+        "recall": 0.4444
+      },
+      "2_structuring": {
+        "n_total": 8,
+        "n_caught": 8,
+        "recall": 1.0
+      },
+      "3_large_cash": {
+        "n_total": 10,
+        "n_caught": 10,
+        "recall": 1.0
+      },
+      "4_rapid_movement": {
+        "n_total": 7,
+        "n_caught": 6,
+        "recall": 0.8571
+      },
+      "5_sanctions": {
+        "n_total": 10,
+        "n_caught": 8,
+        "recall": 0.8
+      },
+      "6_pep": {
+        "n_total": 7,
+        "n_caught": 7,
+        "recall": 1.0
+      },
+      "7_cross_border": {
+        "n_total": 6,
+        "n_caught": 4,
+        "recall": 0.6667
+      },
+      "8_behavioral_deviation": {
+        "n_total": 7,
+        "n_caught": 5,
+        "recall": 0.7143
+      },
+      "9_just_below_limits": {
+        "n_total": 6,
+        "n_caught": 6,
+        "recall": 1.0
+      }
+    }
+  },
+  "shap_baseline": {
+    "amount_usd_log": 0.9436919725507878,
+    "originator_risk_rating": 0.012466335876547142,
+    "beneficiary_risk_rating": 0.43573985967663953,
+    "velocity_24h_count": 0.023420250817893222,
+    "velocity_24h_amount": 0.09632424820722699,
+    "velocity_7d_count": 0.07918296732370167,
+    "velocity_7d_amount": 0.09022405359967044,
+    "n_jurisdictions_in_scope": 0.18598561348601908,
+    "amount_just_under_us_ctr": 0.008522408453383718,
+    "amount_just_under_sg_ctr": 0.001174813903834647,
+    "is_cross_border": 0.01253171530694258,
+    "is_usd_swift_xb": 0.009469891562010613,
+    "ofac_sdn_match": 0.0038121545719449826,
+    "mas_tfs_match": 0.0,
+    "originator_is_shell": 0.0,
+    "beneficiary_is_shell": 0.010398786206202229,
+    "pep_originator_foreign": 0.0,
+    "pep_originator_domestic": 0.0,
+    "pep_beneficiary_foreign": 0.0,
+    "pep_beneficiary_domestic": 0.0,
+    "currency_USD": 0.022824397106554997,
+    "currency_SGD": 0.0031753399713740724,
+    "channel_FAST": 0.02415421948271079,
+    "channel_GIRO": 0.3150599056013985,
+    "channel_SWIFT": 0.5128599801609011,
+    "channel_CHIPS": 0.0,
+    "channel_FEDWIRE": 0.047557887321434164,
+    "channel_ACH": 0.046122571010495036,
+    "channel_CASH_USD": 0.2556930918710663,
+    "channel_CASH_SGD": 0.08069211712037785,
+    "originator_domicile_SG": 0.03933763416101827,
+    "originator_domicile_US": 0.12646092203923445,
+    "originator_domicile_ID": 0.0,
+    "originator_domicile_PH": 0.0,
+    "originator_domicile_IR": 0.0,
+    "originator_domicile_KP": 0.0,
+    "originator_domicile_VE": 0.0,
+    "originator_domicile_CU": 0.0,
+    "originator_domicile_MY": 0.0,
+    "originator_domicile_RU": 0.0,
+    "originator_domicile_SY": 0.0,
+    "beneficiary_domicile_SG": 0.034303204608402096,
+    "beneficiary_domicile_US": 0.044104491020686795,
+    "beneficiary_domicile_ID": 0.01776604869024592,
+    "beneficiary_domicile_PH": 0.0005883799577150376,
+    "beneficiary_domicile_IR": 0.0,
+    "beneficiary_domicile_KP": 0.0,
+    "beneficiary_domicile_VE": 0.0005945915305397458,
+    "beneficiary_domicile_CU": 9.458860630225624e-05,
+    "beneficiary_domicile_MY": 0.011140685962588822,
+    "beneficiary_domicile_RU": 0.0,
+    "beneficiary_domicile_SY": 0.0
+  },
+  "jurisdiction_validation": {
+    "{US}": {
+      "n": 255,
+      "mean_score": 0.30309482523162545,
+      "p95_score": 0.9537120438907327,
+      "n_above_threshold_0_5": 68
+    },
+    "{SG}": {
+      "n": 379,
+      "mean_score": 0.21845771712201845,
+      "p95_score": 0.9214694389454366,
+      "n_above_threshold_0_5": 77
+    },
+    "{SG,US}": {
+      "n": 366,
+      "mean_score": 0.5643628095795807,
+      "p95_score": 0.9514314491768026,
+      "n_above_threshold_0_5": 213
+    }
+  },
+  "hyperparameters": {
+    "objective": "binary",
+    "learning_rate": 0.05,
+    "num_leaves": 31,
+    "max_depth": 6,
+    "scale_pos_weight": "auto (n_neg / n_pos)",
+    "early_stopping_rounds": 25
+  },
+  "training_window": {
+    "transaction_count": 1000,
+    "positive_count": 324,
+    "positive_rate": 0.324
+  }
+}

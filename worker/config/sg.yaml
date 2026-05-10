@@ -1,0 +1,158 @@
+# Strait Compliance — Singapore rule pack
+# Examiner-readable, git-versioned. Every alert in Postgres records the SHA
+# of this file at scoring time so a rule change is always traceable.
+#
+# Verified-rules log: see worker/RULES_VERIFICATION.md
+# Items in this file marked UNVERIFIED have a paragraph reference or scope
+# detail that has NOT been confirmed against the official MAS Notice 626 PDF
+# yet. Do not cite paragraph numbers from those items in the assignment
+# deck or the Task 4 viva until the primary source is read directly.
+
+jurisdiction: SG
+schema_version: 1
+human_label: "Singapore — CDSA / TSOFA / MAS Notice 626"
+authority: MAS
+prudential_examiners: [MAS]
+statute:
+  - "Corruption, Drug Trafficking and Other Serious Crimes (Confiscation of Benefits) Act"
+  - "Terrorism (Suppression of Financing) Act 2002"
+  - "MAS Notice 626"
+
+# Sanctions screening — MAS Targeted Financial Sanctions implementing
+# UN Security Council resolutions plus MAS-specific designations. No
+# OFAC-style extraterritorial reach.
+sanctions:
+  primary_list: MAS_TFS
+  also_apply: [UN_SC]
+  triggers_verdict: block
+
+# NOTE: There is intentionally no `currency_transaction` block for Singapore.
+# Singapore banks have no general cash transaction reporting threshold.
+# Bank cash reporting in SG is purely suspicion-based via STR under
+# CDSA s.45 (the `suspicious_transaction` block below).
+#
+# The S$20,000 CTR threshold that appears in some compliance guides is
+# from the PSPM Act 2019 — it applies to precious-stones / precious-metals
+# dealers and to banks only when handling cash for that narrow category.
+# Our synthetic data does not model PSPM-channel transactions, so this
+# rule is omitted entirely rather than encoded incorrectly.
+#
+# Sources verified 2026-04-26:
+#   https://www.mha.gov.sg/media-room/newsroom/ministerial-statement-on-singapore-anti-money-laundering-regime/
+#   https://acd.mlaw.gov.sg/transaction-based-requirements/
+
+# Suspicious Transaction Report — no monetary threshold under CDSA s.39.
+# Any reasonable suspicion triggers the duty regardless of amount.
+suspicious_transaction:
+  threshold_native: null
+  native_currency: SGD
+  triggers_verdict: flag
+  rule_id: "SG.STR.SUSPICION"
+  # VERIFIED: Singapore Police Force / STRO official page cites CDSA Section 45.
+  # Older sources (and earlier drafts of this YAML) cited Section 39 — that
+  # section number was used pre-2024 amendments. SPF's current page is the
+  # authoritative source for the post-amendment numbering.
+  citation: "CDSA s.45 (formerly s.39 pre-2024)"
+  filing_deadline: as_soon_as_practicable
+  destination: STRO_SPF
+
+# PEP scope — UNVERIFIED.
+# The exact text of the MAS Notice 626 PEP definition (and whether it
+# enumerates foreign / domestic / international-organisation PEPs as
+# distinct categories) has not been confirmed against the official PDF.
+# Secondary sources and FATF guidance suggest broader-than-US coverage,
+# but the YAML scope value below should be treated as a working
+# placeholder until verified.
+pep:
+  scope: foreign_and_domestic
+  triggers_verdict: flag
+  rule_id: "SG.PEP.ALL"
+  citation: "MAS Notice 626 (paragraph reference and exact scope UNVERIFIED)"
+
+# ML score — threshold is intentionally NOT pinned here. The engine reads
+# the auto-tuned `decision_threshold` from the model card so a re-trained
+# model rolls forward without a YAML edit. The model SHA pinned on every
+# alert binds the alert to the threshold actually applied. Could diverge
+# from US if calibration analysis (model_versions.jurisdiction_validation)
+# shows systematic differences in score distribution between regimes —
+# add `threshold: <value>` here as a deliberate override in that case.
+ml_score:
+  triggers_verdict: flag
+  rule_id: "SG.ML.THRESHOLD"
+
+# AI governance — MAS has the more comprehensive regime. FEAT principles
+# (2018) + Veritas methodology (2021-2024) + agentic AI consultation.
+ai_governance:
+  framework: "MAS FEAT Principles + Veritas methodology"
+  genai_excluded_from_mrm: false
+  effective_date: 2018-11-12
+  agentic_ai_consultation: true
+
+# Risk-based rules — Singapore's principles-based, risk-driven supervisory
+# approach. These produce `block` verdicts under conditions where the US
+# threshold-based regime typically only flags. Each rule fires when a
+# specific signal is set on the transaction (in `raw.sg_signals.<flag>`),
+# representing the bank's risk-based determination during EDD or
+# transaction monitoring.
+#
+# Citations are to MAS Notice 626 (general principles-based approach) and
+# FATF Recommendations (verifiable via fatf-gafi.org).
+risk_based_rules:
+  pep_high_risk_destination:
+    triggers_verdict: block
+    rule_id: "SG.RBR.PEP_HIGH_RISK_DEST"
+    flag_in_raw: "pep_high_risk_destination"
+    description: "PEP transferring to medium/high-risk country with no clear business purpose"
+    citation: "MAS Notice 626 EDD requirements; FATF Recommendation 12"
+
+  tbml_inconsistent:
+    triggers_verdict: block
+    rule_id: "SG.RBR.TBML_INCONSISTENT"
+    flag_in_raw: "tbml_inconsistent"
+    description: "Trade-based ML signal: invoice value inconsistent with declared goods/services"
+    citation: "MAS Notice 626 (TBML focus); FATF Trade-Based Money Laundering Best Practices"
+
+  complex_layering:
+    triggers_verdict: block
+    rule_id: "SG.RBR.COMPLEX_LAYERING"
+    flag_in_raw: "complex_layering"
+    description: "Funds routed through multiple jurisdictions in small amounts; layering pattern"
+    citation: "MAS Notice 626 (transaction monitoring); FATF Recommendation 20"
+
+  behavioral_deviation_strong:
+    triggers_verdict: block
+    rule_id: "SG.RBR.BEHAVIORAL_DEVIATION_STRONG"
+    flag_in_raw: "behavioral_deviation_strong"
+    description: "Strong deviation from customer's normal behavioural profile (sudden activity, new corridor at scale)"
+    citation: "MAS Notice 626 (ongoing monitoring); FATF Recommendation 10"
+
+  pep_intermediary_layering:
+    triggers_verdict: block
+    rule_id: "SG.RBR.PEP_INTERMEDIARY"
+    flag_in_raw: "pep_intermediary_layering"
+    description: "PEP routes funds through multiple intermediary accounts before final transfer"
+    citation: "MAS Notice 626 (PEP EDD + layering); FATF Recommendation 12"
+
+  missing_documentation:
+    triggers_verdict: block
+    rule_id: "SG.RBR.MISSING_DOCS"
+    flag_in_raw: "missing_documentation"
+    description: "Corporate transfer without sufficient supporting documentation"
+    citation: "MAS Notice 626 (CDD/EDD); FATF Recommendation 10"
+
+  repeated_pattern_below_threshold:
+    triggers_verdict: block
+    rule_id: "SG.RBR.REPEATED_BELOW_THRESHOLD"
+    flag_in_raw: "repeated_pattern_below_threshold"
+    description: "Repeated transfers just below thresholds to the same medium/high-risk destination"
+    citation: "MAS Notice 626 (transaction monitoring); FATF Recommendation 20"
+
+  new_customer_large_transfer:
+    triggers_verdict: block
+    rule_id: "SG.RBR.NEW_CUSTOMER_LARGE"
+    flag_in_raw: "new_customer_large_transfer"
+    description: "Newly-onboarded high-risk customer making large transaction soon after onboarding (EDD not satisfied)"
+    citation: "MAS Notice 626 (EDD on onboarding); FATF Recommendation 10"
+
+# Direction-of-travel marker for the dashboard's regime-status panel.
+direction_of_travel_2026: tightening

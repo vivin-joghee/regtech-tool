@@ -1,0 +1,27 @@
+name = "strait-compliance-worker"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Bundle YAML rule packs as strings so the worker can parse + validate
+# them at module init time.
+[[rules]]
+type = "Text"
+globs = ["**/*.yaml"]
+fallthrough = true
+
+# Local dev binds to .dev.vars (a gitignored file holding DATABASE_URL).
+# Production secrets are managed via `wrangler secret put DATABASE_URL`.
+
+[observability]
+enabled = true
+
+# When we ship the predictions cache to R2 instead of bundling, uncomment:
+# [[r2_buckets]]
+# binding = "ARTIFACTS"
+# bucket_name = "strait-compliance-artifacts"
+
+# When the rule packs are loaded into KV (Phase A.2), uncomment:
+# [[kv_namespaces]]
+# binding = "RULE_PACKS"
+# id = "<filled-in-by-wrangler-kv-namespace-create>"
