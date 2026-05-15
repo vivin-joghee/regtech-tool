@@ -51,9 +51,9 @@ export function JurisdictionConfigPage() {
 function PackView({ pack: data }: { pack: JurisdictionPackResponse }) {
   const p = data.pack;
   return (
-    <div className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       {/* Parsed view */}
-      <div className="space-y-4">
+      <div className="space-y-4 min-w-0">
         <Card>
           <CardHeader>
             <CardTitle>{p.human_label}</CardTitle>
@@ -148,7 +148,7 @@ function PackView({ pack: data }: { pack: JurisdictionPackResponse }) {
       </div>
 
       {/* Raw YAML */}
-      <Card>
+      <Card className="min-w-0">
         <CardHeader>
           <CardTitle>Raw YAML</CardTitle>
           <CardDescription>
