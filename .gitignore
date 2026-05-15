@@ -41,3 +41,13 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Claude Code session metadata (transcripts / local agent state — never commit)
+.claude/
+
+# TypeScript incremental build cache (machine-specific, regenerates locally)
+*.tsbuildinfo
+
+# Stray / duplicate artefacts that should not be checked in
+worker/data/metadata.json
+worker/data/predictions copy.json
