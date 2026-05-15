@@ -22,8 +22,6 @@ NTU MH6822 Regulatory Technology — Assignment 1 (Option A: Working Prototype)
 | | URL |
 |---|---|
 | Web application (Cloudflare Pages) | https://strait-compliance.pages.dev |
-| Backend API (Cloudflare Worker) | https://strait-compliance-worker.vivinjoghee.workers.dev |
-| Health endpoint (verifies the deployment) | https://strait-compliance-worker.vivinjoghee.workers.dev/api/health |
 | Source repository (GitHub) | https://github.com/vivin-joghee/regtech-tool |
 
 The web application is the simplest entry point — open it in any modern browser. No login required. All data is synthetic.
