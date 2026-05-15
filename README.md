@@ -123,6 +123,54 @@ A guiding rule of this project: **no rule is encoded from memory**. Every regula
 
 ---
 
+## Acknowledgements and AI-use disclosure
+
+This is a collaborative effort. Domain expertise, source selection, regulatory verification, and final accountability for the submission are mine. The build, deployment, and document production were materially accelerated by AI tools, used under my direction and reviewed by me at every checkpoint. The split is recorded here so the assessor can weigh each contribution accurately.
+
+### Domain expertise (mine, not the AI's)
+
+- **Five years at Standard Chartered Bank.** The choice of entity was not arbitrary — I worked at SCB for five years, which shaped the selection of the bank, the corridor pair (US ↔ Singapore), and the failure-mode framing around cross-jurisdictional monitoring. The chosen reference case is the closest public mirror of a problem I have direct operational familiarity with.
+- **Ground-work for the AML news trail.** I gathered the enforcement-history references myself — the 2012 USD$327M action, the 2014 USD$300M *failure-to-remediate* penalty, the 2019 USD$1.1B settlement, and the 2024 MAS follow-up after the S$3B Singapore money-laundering case — and chose which to include based on their relevance to the divergence argument.
+- **Manual verification of links and citations.** Every URL in the writeups and the rule packs was checked manually for resolution. Where an AI tool drafted a citation that contradicted what I found on the regulator's actual page (most notably the Singapore "S$20,000 general bank CTR" claim, which is wrong — the S$20,000 figure belongs to the PSPM Act, not MAS Notice 626 for banks), I corrected the text by referring to the primary source directly. The discipline that the rule engine and the writeups now apply (`worker/RULES_VERIFICATION.md`) is the operational form of that correction process.
+- **Python background.** The pipeline architecture (parquet for typed columns, seeded UUIDs for reproducibility, train/val/test split with threshold tuned on validation, ONNX export) is the kind of code I have written professionally. AI accelerated the writing; the decisions were ones I would have defended without AI in the room.
+
+### AI tools used
+
+| Tool | Used for |
+|---|---|
+| **Claude Code (Anthropic)** in VS Code | Primary coding agent for this project. Wrote, refactored, and verified code across `worker/` (TypeScript rule engine, Drizzle ORM, Hono routes), `web/` (Vite + React + Tailwind), and `pipeline/` (Python data generation, LightGBM training, TreeSHAP, ONNX export). Also produced the YAML rule packs (under my dictation of the regulations), the verification log, the test scenarios, the architecture documents, the one-page summary, the senior-management deck, and the speaker notes. Drove the `wrangler` CLI to deploy the Worker and Pages site to Cloudflare. |
+| **Neon MCP server** | Database operations against the live Neon Postgres instance: schema inspection, alert and contradiction queries, verification that deployed model SHAs matched on-disk artefacts. Used throughout the development loop and again for the final audit checks before submission. |
+| **`wrangler` CLI (driven via Claude Code over Bash)** | Cloudflare deployment — Workers, Pages, and secret management. Authentication (`wrangler login`) was done manually in my browser; the deploy commands and the `DATABASE_URL` secret push were automated under my direction. |
+| **Claude (Anthropic, web app)** | Initial framing of the task choice and the entity-selection arguments for Task 1. |
+| **ChatGPT (OpenAI)** | Independent review pass on Task 1 and Task 2. Produced the validation-findings documents (`Task1_…_Validation_Findings.md`, `Task2_…_Validation_Findings.md`) which I then triaged finding-by-finding. Where its review caught real errors against the verified source trail (the S$20K threshold, the CDSA s.39 → s.45 amendment, the OCC 2026-13 overstatement), the corrections were applied. Where its review flagged something that did not match what I found on the regulator's site, I overrode the suggestion and recorded the rationale. |
+| **`python-docx` and `python-pptx`** (driven by Claude Code) | Generation of the `.docx` and `.pptx` deliverables programmatically, including embedded matplotlib charts and speaker notes — so the documents track the source data automatically rather than being hand-edited in Word/PowerPoint. |
+
+### The ML side — what I deliberately did NOT hand-tune
+
+For the LightGBM scorer in `pipeline/train_model.py`, I left the model to determine its own internals rather than imposing my priors on it:
+
+- **Feature selection** — I supplied 44 candidate features (amount, channel one-hots, domicile one-hots, PEP / sanctions booleans, velocity windows, customer risk ratings). LightGBM's gain importance and TreeSHAP decide which ones actually move the score. The global feature-importance chart on the model-card page is the model's own answer, not mine.
+- **F1-optimal decision threshold** — `tune_threshold_on_validation()` sweeps the precision-recall curve on the validation split and picks the threshold that maximises F1. The number that lands in `model-metadata.json` (currently 0.5960) was chosen by the model, not by me.
+- **Per-feature SHAP attribution** — TreeSHAP attributes the gap between each row's score and the model's base value across the 44 features. This is what the alert drawer renders. I do not hand-label features as "important" — the algorithm does.
+
+The only place I overrode the model was in the label function (`make_label()` in `train_model.py`): I excluded two sub-shapes (`ofac_only_low_signal`, `tbml_low_signal`) from the ML positive set because they are deterministically detected by the rule engine, and training ML to flag them too would have collapsed the `US block / SG allow` and `US allow / SG block` contradiction shapes back into less informative `block / flag` forms. That override is documented in the function's docstring and is itself a defensible engineering choice — but it is the only place I bent the model to fit the demo rather than the other way around.
+
+### What I verified personally
+
+- Every regulatory citation in the YAML rule packs against the primary source (CFR, MAS, SPF/STRO, ACRA, OCC).
+- Every URL in Task 1, Task 2, and Task 3 — many had to be replaced because regulator sites restructure paths. Where the deep link no longer resolves, I left a search hint to the regulator's stable landing page.
+- The Standard Chartered enforcement-history figures by reading the original DOJ, NYDFS, Fed, and MAS press releases / consent orders, not summaries.
+- The `RULES_VERIFICATION.md` corrections log — every "WRONG / CORRECTION REQUIRED" entry in that file came out of me catching a difference between an AI-generated draft and a primary regulator page.
+- The contradiction distribution (36 / 18 / 12 / 12) by querying the live database myself before reporting it.
+
+### Net effect
+
+The result is a working prototype that I could not have built alone in the time available, and that the AI alone would not have produced correctly without my domain context (most visibly: the S$20K Singapore CTR error that survived the AI's first draft because the AI did not know that figure traces to the PSPM Act and not to bank cash flows). My contribution is the regulatory accuracy, the architectural choices that bound what the tool will and will not claim, and the boundary discipline that distinguishes verified rules from unverified ones. The AI's contribution is the velocity of putting that discipline into running code and presentable documents.
+
+The submission is mine; the help is acknowledged.
+
+---
+
 ## Contact
 
 For any questions about this submission, please contact me at **VIVIN001@e.ntu.edu.sg** or **vivinjoghee@gmail.com**.
