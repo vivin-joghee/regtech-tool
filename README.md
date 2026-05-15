@@ -33,7 +33,8 @@ The web application is the simplest entry point — open it in any modern browse
 | `Task1_SelectionAndResearch.docx` / `.md` | Entity selection (Standard Chartered) and US ↔ Singapore regulatory divergence analysis |
 | `Task2_ValuesAudit.docx` / `.md` | Hypothetical company persona (Strait Compliance Pte. Ltd.) and four-question values audit |
 | `Task3_Architecture.md` (in this repository) | Detailed architecture and design rationale for the prototype |
-| `Strait_Compliance_Presentation.pptx` | Slide deck |
+| `Task3_OnePageSummary.docx` | One-page summary for Task 3 |
+| `Task3_SeniorManagementDeck.pptx` | Slide deck |
 
 > Tasks 1 and 2 are submitted as separate `.docx` / `.md` files outside this repository. Task 3 is included here as `Task3_Architecture.md` because it documents the implemented system itself.
 
