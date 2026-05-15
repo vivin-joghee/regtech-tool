@@ -101,11 +101,11 @@ function PackView({ pack: data }: { pack: JurisdictionPackResponse }) {
                 citation={p.currency_transaction.citation}
               />
             ) : (
-              <div className="rounded-md border border-slate-800 p-3 text-xs text-slate-400 italic">
-                No general Currency Transaction Report rule in this
-                jurisdiction. Bank cash reporting relies on the
-                suspicion-based STR rule below.
-              </div>
+              <RuleRow
+                label="Currency Transaction Report"
+                ruleId="N/A"
+                detail="No general Currency Transaction Report rule in this jurisdiction. Bank cash reporting relies on the suspicion-based STR rule below."
+              />
             )}
             {(p.suspicious_activity ?? p.suspicious_transaction) && (
               <RuleRow
