@@ -48,8 +48,7 @@ export function LandingPage() {
         <CardHeader>
           <CardTitle>What the tool does NOT do</CardTitle>
           <CardDescription>
-            Honest scope, rather than performing virtue. Pulled from the Task 2
-            values audit.
+            Honest scope, rather than performing virtue.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-slate-300">

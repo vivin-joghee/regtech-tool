@@ -138,7 +138,7 @@ export function DashboardPage() {
             Each contradiction is a transaction where the US and Singapore
             rule packs reached <em>different verdicts</em>. The tool does NOT
             silently pick one — every contradiction must be resolved by a
-            human reviewer (architecture §7, Task 2 §4(d) failure shape C).
+            human reviewer.
           </p>
           <p>
             Two patterns dominate: <Badge variant="info">CTR asymmetry</Badge>{" "}

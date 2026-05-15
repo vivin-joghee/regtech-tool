@@ -49,7 +49,7 @@ Each transaction is annotated by the generator with its expected verdict per reg
 
 ## Why parquet AND csv
 
-- **CSV** is human-readable and opens in Excel — best for sharing with examiners or non-Python readers.
+- **CSV** is human-readable and opens in Excel.
 - **Parquet** preserves the dict-typed `raw` column and the list-typed `in_scope_jurisdictions` column natively. CSV stores both as JSON strings, which is portable but loses query ergonomics.
 
 The pipeline reads parquet (faster, type-safe). CSV is the demo artefact.
