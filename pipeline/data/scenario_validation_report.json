@@ -1,0 +1,3653 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-01T07:57:08.752631+00:00",
+  "summary": {
+    "transactions": 1000,
+    "alerts": 1250,
+    "contradictions": 78
+  },
+  "by_scenario_category": {
+    "1_normal": {
+      "expected_total": 656,
+      "matches": 620,
+      "mismatches": 36
+    },
+    "6_pep": {
+      "expected_total": 25,
+      "matches": 20,
+      "mismatches": 5
+    },
+    "7_cross_border": {
+      "expected_total": 50,
+      "matches": 15,
+      "mismatches": 35
+    },
+    "9_just_below_limits": {
+      "expected_total": 30,
+      "matches": 7,
+      "mismatches": 23
+    },
+    "2_structuring": {
+      "expected_total": 30,
+      "matches": 23,
+      "mismatches": 7
+    },
+    "8_behavioral_deviation": {
+      "expected_total": 35,
+      "matches": 29,
+      "mismatches": 6
+    },
+    "11_sg_block_risk_based": {
+      "expected_total": 48,
+      "matches": 22,
+      "mismatches": 26
+    },
+    "5_sanctions": {
+      "expected_total": 46,
+      "matches": 42,
+      "mismatches": 4
+    },
+    "4_rapid_movement": {
+      "expected_total": 35,
+      "matches": 34,
+      "mismatches": 1
+    },
+    "3_large_cash": {
+      "expected_total": 25,
+      "matches": 4,
+      "mismatches": 21
+    },
+    "10_business_trade": {
+      "expected_total": 20,
+      "matches": 16,
+      "mismatches": 4
+    }
+  },
+  "by_contradiction_type": {
+    "D": {
+      "expected": 845,
+      "actual": 778,
+      "matched": 777,
+      "unintended": 1
+    },
+    "A": {
+      "expected": 62,
+      "actual": 144,
+      "matched": 61,
+      "unintended": 83
+    },
+    "C": {
+      "expected": 48,
+      "actual": 48,
+      "matched": 48,
+      "unintended": 0
+    },
+    "B": {
+      "expected": 45,
+      "actual": 30,
+      "matched": 30,
+      "unintended": 0
+    }
+  },
+  "diagnosis_buckets": {
+    "match": 832,
+    "engine_over_fires": 167,
+    "engine_under_fires": 1
+  },
+  "acceptance_criteria": {
+    "normal_category_match_rate_target": 0.99,
+    "normal_category_match_rate_actual": 0.9451,
+    "normal_category_meets_target": false,
+    "type_a_match_rate_target": 0.85,
+    "type_a_match_rate_actual": 0.9839,
+    "type_a_meets_target": true,
+    "type_b_match_rate_target": 0.85,
+    "type_b_match_rate_actual": 0.6667,
+    "type_b_meets_target": false
+  },
+  "mismatches": [
+    {
+      "transaction_id": "ed6bb0e2-40c3-4900-8ce0-764debb8ee3c",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "sgd_domestic",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "113f2711-2b16-40f0-ae74-562226e52807",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "below_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "934bcafb-e1a2-49a7-adab-7fc79b7358d0",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_dom_b2b",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "6d3f50b5-d365-49ca-af62-05243b430bbc",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_ctr_cash",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "9938d7d8-2bb0-428b-ae33-26821b23ec68",
+      "scenario_category": "8_behavioral_deviation",
+      "scenario_sub_shape": "first_touch_new_corridor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "a9540139-7bac-459b-81db-6dffef826455",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "f5a7aaf9-3994-4af9-a77e-76d148449067",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "5257519a-b182-49ab-8d03-003695616c1e",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "ed7360fe-bd5a-47ca-aa7a-91fbcd98b284",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "complex_layering_multi_country",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.COMPLEX_LAYERING",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.COMPLEX_LAYERING, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "a63222b8-7df7-4d02-844f-6c2d9754f352",
+      "scenario_category": "5_sanctions",
+      "scenario_sub_shape": "high_risk_country_flow",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "b3da47f5-5ad3-4308-993c-7d97e456d32d",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "tbml_inconsistent_invoice",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.TBML_INCONSISTENT",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.TBML_INCONSISTENT, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "59fd37fd-9829-4e17-8645-231fd1e24c24",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "17335e5f-8db7-46ec-b62e-586482f68061",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "sgd_domestic",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "5ef9a4a7-8007-4b39-9693-9caca63ee4a4",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "1f583ccc-cb48-418c-aa5c-4869d1105795",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "cf22c8e7-7ef2-4888-990e-54fdd144cae0",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "9355a58f-5887-4d15-a72a-cd73c6ebca96",
+      "scenario_category": "2_structuring",
+      "scenario_sub_shape": "us_structuring_solo_leg",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "3c407601-85a9-4034-8d79-1ffa4ce7468b",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "sudden_behavior_change",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.BEHAVIORAL_DEVIATION_STRONG",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.BEHAVIORAL_DEVIATION_STRONG, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "d6b3dbfd-db43-49d8-bbc6-4c8d1d998ef5",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "604d3af3-b89e-4190-9fcb-7aad55e4cab1",
+      "scenario_category": "8_behavioral_deviation",
+      "scenario_sub_shape": "new_counterparty",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "5c33ca0e-bef3-4885-a234-5c24f1e1fa63",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "c8c9590f-8521-43a2-bb43-dc80bb152dfc",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "sgd_cash_no_sg_threshold",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "071b3dcf-3ba1-4506-b04d-ec614f396fad",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "retail_remit",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "61eb5f09-21b6-4da6-ad75-ae85b9f45476",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "e77381ea-beb3-4eca-b12e-13e5aef0b9d0",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "repeated_below_threshold",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.REPEATED_BELOW_THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.REPEATED_BELOW_THRESHOLD, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "0006f691-7f76-4624-9f3a-bd42ed7bfc76",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "c9220827-0452-4380-92e8-068f0e0fbff9",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "74961ccf-3635-4db9-9350-4c85fb07c3ad",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "765c51d7-28c7-4cd8-a207-78e5ad005b16",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "below_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "a8f39e31-aee4-441d-8ac1-0f816405bedb",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "below_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "c913858b-63db-4522-87e4-17b655102412",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "b2be3a2f-5383-4d5f-817a-53c50696db64",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "f427c4cd-f9a4-4dc9-bfa0-db08aa66794f",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "repeated_below_threshold",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.REPEATED_BELOW_THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.REPEATED_BELOW_THRESHOLD, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "09ecb6d4-ba77-42ea-989a-361fd5766741",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "d4acbb1c-6f43-4600-8e14-575a4604f373",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_ctr_cash",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "ad915ea0-a0b7-420d-aa08-3beaf52a9d6a",
+      "scenario_category": "2_structuring",
+      "scenario_sub_shape": "us_structuring_solo_leg",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "d7f50266-3a5a-4852-af63-ab3d23467279",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "67f79b7d-9430-4261-8ef2-a3afcc494788",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "84f2115d-d3bb-4a4a-8361-7b43f7b5d9ee",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "ece1937d-08a7-4b06-a4b7-98fdb4ccc04a",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "complex_layering_multi_country",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.COMPLEX_LAYERING",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.COMPLEX_LAYERING, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "276aed4f-0895-4897-92fa-58be3bc79568",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "sudden_behavior_change",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.BEHAVIORAL_DEVIATION_STRONG",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.BEHAVIORAL_DEVIATION_STRONG, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "ea991bd6-e285-4cd2-a593-3af180b892f0",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "repeated_below_threshold",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.REPEATED_BELOW_THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.REPEATED_BELOW_THRESHOLD, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "b066a700-2bb2-456b-bcb9-877de5d28f0e",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "d9a8ca5a-943a-4a2a-b266-17a6aaf5c74d",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "cd7cf5b5-2a44-4358-9a6f-109299b84ed8",
+      "scenario_category": "6_pep",
+      "scenario_sub_shape": "sg_domestic_pep_via_shell",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "ee0dd41f-70d3-457b-ab16-f8ea0a995bee",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "2d74c203-248d-476a-ac2d-08c2a6e269bd",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "7d59dc90-64aa-4ccf-8236-5cb57444c179",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "e263d173-00b6-479a-ba2a-068407179a67",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "bc4f41da-f287-4072-88f7-832977a6d6f4",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "754093fb-316b-45e2-a5ec-1c8657f6252e",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "sgd_cash_no_sg_threshold",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "cd5e499b-347b-4d86-88ed-3e51bf197a4b",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "e5ee679c-f78d-4761-9591-1086a2940dd1",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "887ee411-0d34-4d12-a998-fa1fe4a2b71d",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "3cb9178b-44fa-4d00-aa67-6db6dcb27649",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "16a47ee2-2f8a-4f18-8128-d12c538ca357",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "31fc3e4c-6723-4a23-9af7-dff3222502db",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "326d8af6-51dc-4a64-920b-57e1c63caab8",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "2be4d28b-dd17-4a34-bdf8-19f5ccbac52e",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "80d7a34e-4b02-4d69-896e-8c7145758887",
+      "scenario_category": "2_structuring",
+      "scenario_sub_shape": "sg_repeat_low_value_cash",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "4c283af4-25fd-4ee4-bdbe-3d47eaa78aef",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "sgd_domestic",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "981f647c-a25f-4c52-8c8c-c2379ff4230d",
+      "scenario_category": "10_business_trade",
+      "scenario_sub_shape": "shell_on_trail",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "a8769ee0-8710-4c04-81d4-05e5736184d8",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "20cb49f6-5486-4f0e-90a1-035aae4bc3b4",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "tbml_inconsistent_invoice",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.TBML_INCONSISTENT",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.TBML_INCONSISTENT, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "3070caf1-14ea-4e33-ac44-c73ebaaff1b3",
+      "scenario_category": "2_structuring",
+      "scenario_sub_shape": "sg_repeat_low_value_cash",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "feeb26b5-e999-46a1-99ef-f64319fe91a8",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "a3d659bf-080e-46da-afce-fe8e1fa497d3",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "below_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "5e95beb3-0105-4060-ba55-9d78893779e8",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "below_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d77c229c-54bc-4a17-b082-6d382bce3acf",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "fc1661b5-6b75-40b4-b08a-3c7bbf0dddf1",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "f8b3690b-c80e-4916-94e7-a5e3f0196aac",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "below_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "9dff1372-a969-4b0c-a014-3b1ff80408c8",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "complex_layering_multi_country",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.COMPLEX_LAYERING",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.COMPLEX_LAYERING, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "da21d1e1-3d25-468b-a2c1-924e4ff5472a",
+      "scenario_category": "8_behavioral_deviation",
+      "scenario_sub_shape": "new_counterparty",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "54b4ba61-f5ab-4ef5-a597-04f635e9b43d",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "b2bfa14b-3700-4cc7-8327-53351c157b15",
+      "scenario_category": "2_structuring",
+      "scenario_sub_shape": "sg_repeat_low_value_cash",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "c47f390d-54fc-4f52-bdce-25bcc92c7077",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_ctr_cash",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "79aac85f-196c-4ff0-84d3-b97c59a71421",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "3b5f647c-f951-4654-9d40-d9a6e4d9c478",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_ctr_cash",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "00938188-e140-49e0-bd0c-d62cef03f72c",
+      "scenario_category": "2_structuring",
+      "scenario_sub_shape": "sg_repeat_low_value_cash",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "841b6437-c9bf-4e97-948b-4275699fcdf0",
+      "scenario_category": "6_pep",
+      "scenario_sub_shape": "sg_domestic_pep_via_shell",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "fd428206-fe7b-447e-bc24-90319fd67453",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d11efbda-4594-4267-b64a-8b07fef66a3c",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "787c705b-1dd9-44ec-be35-ee196fcb1836",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "complex_layering_multi_country",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.COMPLEX_LAYERING",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.COMPLEX_LAYERING, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "f896fa3b-ed1a-4183-861f-2a73c84841b1",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "82d8927f-cb4f-44f6-b0cc-e92d2c370aa2",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "8fd531e3-180b-4df6-b798-d92ec57c1239",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "25e1278e-79e8-4a92-b2ec-d8165f1a5f6b",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d3899f9f-8a32-4991-9deb-98dcacd779b8",
+      "scenario_category": "10_business_trade",
+      "scenario_sub_shape": "high_value_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "ece8333a-1e5c-44ca-b5ec-2bd6d247d6d0",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "new_customer_large_transfer",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.NEW_CUSTOMER_LARGE",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.NEW_CUSTOMER_LARGE, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "f695a07e-287c-4f0e-bf92-43dea947bf77",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "7ca373f8-cbe5-42c4-9616-9fc33158396f",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "sgd_cash_no_sg_threshold",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "8c6b4e81-eb20-414a-9b12-e1a38321c1a6",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "c7755376-8239-4790-8509-a331b3824468",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "f067e27c-3a08-462c-84bf-f7674c18665a",
+      "scenario_category": "5_sanctions",
+      "scenario_sub_shape": "high_risk_country_flow",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "7bd35572-d075-46f6-9477-85896ac43b12",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "69993b9c-8a7b-41c2-b2b2-016c0c148cc1",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "repeated_below_threshold",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.REPEATED_BELOW_THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.REPEATED_BELOW_THRESHOLD, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "8d11ea36-d521-454e-ace2-ae1f3d9b1b8f",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "c3713ff7-03aa-4a16-91f3-965101f65b82",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "complex_layering_multi_country",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.COMPLEX_LAYERING",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.COMPLEX_LAYERING, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "01831211-a70a-437f-ac0a-31194becbb37",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "5672caa0-3274-47bf-a48a-1da9fdfe4553",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d8d7d4b0-e25b-41a1-94b9-d38ffcba84a7",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "6d1ade53-18aa-4250-b424-f8dc41352531",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "new_customer_large_transfer",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.NEW_CUSTOMER_LARGE",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.NEW_CUSTOMER_LARGE, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "f1ba9a1a-0adb-400e-a617-68c63a78dfed",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "9df90e2a-e840-4402-a0d6-265273c57109",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "e3efcf92-b2cf-43db-a7d9-7834bab55d87",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "83d05365-99b8-4390-b42c-e9d59f953c94",
+      "scenario_category": "6_pep",
+      "scenario_sub_shape": "sg_domestic_pep_via_shell",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "1726559c-fd06-4ae7-a9cc-716fa89fd4b3",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "798b21b6-c675-4d52-8202-78141c6e20eb",
+      "scenario_category": "5_sanctions",
+      "scenario_sub_shape": "high_risk_country_flow",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "d49f33c0-a112-4020-8b0a-7a2890299213",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "new_customer_large_transfer",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.NEW_CUSTOMER_LARGE",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.NEW_CUSTOMER_LARGE, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "872edea4-0755-4fd9-95b8-abe94e1a468c",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "missing_documentation",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.MISSING_DOCS",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.MISSING_DOCS, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "76c51591-89db-46ab-ade4-d49a8967952f",
+      "scenario_category": "2_structuring",
+      "scenario_sub_shape": "us_structuring_solo_leg",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "78ce9972-db83-40c8-b4f0-c967d10a5cc6",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "02df7f72-b521-400e-b228-f22ad0a9edbb",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "a87293ca-7a62-40c6-a1a8-f8103c92d40a",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "missing_documentation",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.MISSING_DOCS",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.MISSING_DOCS, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "2b2de044-5f81-43c1-8ab7-be074102e5e5",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "6a8b9309-4f2f-4bc8-8ffb-168b64bd8105",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "fe9cb86d-5528-4511-a296-f0468b9b332f",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d75d109a-bd31-4fb4-85c3-17140641bd74",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "sgd_cash_no_sg_threshold",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "d210f971-f773-48cd-95f2-137f9d8841c2",
+      "scenario_category": "6_pep",
+      "scenario_sub_shape": "sg_domestic_pep_via_shell",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "38e98c25-6099-4900-834d-55caa16e438d",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "sgd_cash_no_sg_threshold",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "e14ae264-6491-4cca-8e85-d1e9e58358df",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_ctr_cash",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "6c72a9b9-cdf7-459a-8369-df63548a298a",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "09a6d585-0c92-4fd7-a296-702afd7ffae1",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "748a4553-f747-4bef-a102-dd494ce7cf54",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "e1dbe08f-568f-425c-8dcd-46b66c170069",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "4e9de850-dd59-4783-b5e0-2365a6ce042d",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "mixed_currency_layering",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "allow",
+      "expected_sg_verdict": "flag",
+      "actual_sg_verdict": "allow",
+      "expected_contradiction": "A",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_under_fires",
+      "reason_summary": "US: flag (US.ML.THRESHOLD, US.SAR.5K); SG: flag (SG.ML.THRESHOLD, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "9af86e77-bdfb-436b-a8c5-7f4afb939762",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "f94fa491-c528-4264-8cf5-2d5834417d52",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "tbml_inconsistent_invoice",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.TBML_INCONSISTENT",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.TBML_INCONSISTENT, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "d3a1cc0d-ddce-4832-97cd-0ff341f2d3eb",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_ctr_cash",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "913f1de6-4479-4509-a20b-fda1d6f2634a",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "58293502-f532-4392-b579-1412f63e2322",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "sgd_domestic",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "3bad8958-69cb-43e9-9cdb-483731bd9bfa",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "01813a37-021a-4219-ab2e-47a500202a60",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "ee07920c-a37e-4d33-b789-79fcaa08fcb9",
+      "scenario_category": "8_behavioral_deviation",
+      "scenario_sub_shape": "first_touch_new_corridor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "7e03acb7-f78f-4cdb-a85b-034ffbffc71f",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "new_customer_large_transfer",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.NEW_CUSTOMER_LARGE",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.NEW_CUSTOMER_LARGE, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "b1aa3f93-da57-44b9-b77d-5f75644a69f4",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_corp_to_fi",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "00be7216-ec26-4b95-af5b-8e129b233a4f",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "just_below_us_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "56834ff4-1d9f-4930-ba27-95dd1b35bbc8",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "4086f5ea-b494-40fa-bd17-f6bf32d71042",
+      "scenario_category": "6_pep",
+      "scenario_sub_shape": "foreign_pep_via_shell",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "e16a9a34-a3b5-486b-8bae-c85632584f8a",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "sgd_cash_no_sg_threshold",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "098eb094-62cb-413f-a218-f62e465b1c90",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "c7ddde51-5ba7-4259-af95-26de8f4e9528",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "bfa64234-6ab6-45fc-bf92-43b3d851d0aa",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d20b71fc-8d9f-480f-beb0-14f8018b36f8",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d89820f0-e256-460b-8d85-8e5023739461",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "de79e5a9-71c3-42d6-a599-c2cf7746be20",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "bd1c1f3d-49c9-4147-9597-8a43c2fe1d9f",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "def286ca-946f-4db1-94fb-d547d580bcf6",
+      "scenario_category": "1_normal",
+      "scenario_sub_shape": "sg_us_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "896d0b6c-5a7b-4db5-a542-b24136c0c057",
+      "scenario_category": "8_behavioral_deviation",
+      "scenario_sub_shape": "first_touch_new_corridor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "dd3777fa-fc62-470a-b435-ce94fcbceea6",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "tbml_inconsistent_invoice",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.TBML_INCONSISTENT",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.TBML_INCONSISTENT, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "89f1ffde-8826-4090-ba3d-c0746a8cdc80",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "tbml_inconsistent_invoice",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.TBML_INCONSISTENT",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.TBML_INCONSISTENT, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "b2d61d42-5e59-4c68-a295-df08b1a9b6db",
+      "scenario_category": "5_sanctions",
+      "scenario_sub_shape": "high_risk_country_flow",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "d3afac8c-de69-4416-a821-f7b98e1f0460",
+      "scenario_category": "10_business_trade",
+      "scenario_sub_shape": "high_value_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "8865a2db-e16c-4971-9fd4-385864e40eaa",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "f7a62015-9097-432e-8f12-238a1b33862d",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "7bb7f0e4-00bd-43bd-93fc-213634587569",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "6ab2d6df-fe3c-417f-b646-772320750ab2",
+      "scenario_category": "8_behavioral_deviation",
+      "scenario_sub_shape": "new_counterparty",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "561270f0-51fa-4a37-bd70-d29ac3660993",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "repeated_below_threshold",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.REPEATED_BELOW_THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.REPEATED_BELOW_THRESHOLD, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "31246f69-6a6b-42a7-b63b-507800a1d3dc",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "sudden_behavior_change",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.BEHAVIORAL_DEVIATION_STRONG",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.BEHAVIORAL_DEVIATION_STRONG, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "9c7ec549-df9b-47f6-b1fb-b6594b4197ff",
+      "scenario_category": "10_business_trade",
+      "scenario_sub_shape": "high_value_trade",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "6d0cfe92-c87a-4098-a24e-fae48b7b9d36",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    },
+    {
+      "transaction_id": "dc716968-58c6-454b-a4d3-87e6df12b859",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "missing_documentation",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.MISSING_DOCS",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.MISSING_DOCS, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "26e883b4-fd2f-42b2-be6f-f1833e9fd108",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG}",
+      "expected_us_verdict": "not_in_scope",
+      "actual_us_verdict": "not_in_scope",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: not in scope; SG: allow"
+    },
+    {
+      "transaction_id": "c506d54c-79a3-4073-946f-3fc96bc4bc84",
+      "scenario_category": "9_just_below_limits",
+      "scenario_sub_shape": "below_sar_floor",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "a12b337a-ae25-4b72-856b-2c798131c19f",
+      "scenario_category": "11_sg_block_risk_based",
+      "scenario_sub_shape": "new_customer_large_transfer",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "block",
+      "actual_sg_verdict": "block",
+      "expected_contradiction": "C",
+      "actual_contradiction": "C",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.RBR.NEW_CUSTOMER_LARGE",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: block (SG.RBR.NEW_CUSTOMER_LARGE, SG.STR.SUSPICION)"
+    },
+    {
+      "transaction_id": "976163ff-65d5-4dff-ac6c-04e6196613f6",
+      "scenario_category": "7_cross_border",
+      "scenario_sub_shape": "usd_swift_cross_border",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "D",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: allow"
+    },
+    {
+      "transaction_id": "3f61a0c0-f97a-445b-934f-e4c561b2fb08",
+      "scenario_category": "4_rapid_movement",
+      "scenario_sub_shape": "legitimate_merchant_payout",
+      "in_scope": "{US}",
+      "expected_us_verdict": "allow",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "not_in_scope",
+      "actual_sg_verdict": "not_in_scope",
+      "expected_contradiction": "D",
+      "actual_contradiction": "D",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD"
+      ],
+      "actual_sg_hits": [],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: allow; SG: not in scope"
+    },
+    {
+      "transaction_id": "218a5238-86a2-40ac-8119-235c8572d473",
+      "scenario_category": "3_large_cash",
+      "scenario_sub_shape": "usd_cash_above_ctr_clean",
+      "in_scope": "{SG,US}",
+      "expected_us_verdict": "flag",
+      "actual_us_verdict": "flag",
+      "expected_sg_verdict": "allow",
+      "actual_sg_verdict": "flag",
+      "expected_contradiction": "B",
+      "actual_contradiction": "A",
+      "actual_us_hits": [
+        "US.ML.THRESHOLD",
+        "US.CTR.10K",
+        "US.SAR.5K"
+      ],
+      "actual_sg_hits": [
+        "SG.ML.THRESHOLD",
+        "SG.STR.SUSPICION"
+      ],
+      "diagnosis": "engine_over_fires",
+      "reason_summary": "US: flag (US.CTR.10K); SG: allow"
+    }
+  ],
+  "mismatch_count_total": 168
+}

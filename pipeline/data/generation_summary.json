@@ -1,0 +1,51 @@
+{
+  "seed": 42,
+  "n_transactions": 1000,
+  "n_customers": 84,
+  "window_start": "2026-03-25T00:00:00+00:00",
+  "window_end": "2026-04-24T00:00:00+00:00",
+  "by_scenario_category": {
+    "1_normal": 656,
+    "6_pep": 25,
+    "7_cross_border": 50,
+    "9_just_below_limits": 30,
+    "2_structuring": 30,
+    "8_behavioral_deviation": 35,
+    "11_sg_block_risk_based": 48,
+    "5_sanctions": 46,
+    "4_rapid_movement": 35,
+    "3_large_cash": 25,
+    "10_business_trade": 20
+  },
+  "by_expected_contradiction_type": {
+    "D": 845,
+    "A": 62,
+    "C": 48,
+    "B": 45
+  },
+  "by_expected_us_verdict": {
+    "allow": 456,
+    "not_in_scope": 379,
+    "flag": 127,
+    "block": 38
+  },
+  "by_expected_sg_verdict": {
+    "not_in_scope": 255,
+    "allow": 582,
+    "flag": 110,
+    "block": 53
+  },
+  "by_currency": {
+    "USD": 656,
+    "SGD": 344
+  },
+  "by_channel": {
+    "ACH": 130,
+    "SWIFT": 419,
+    "GIRO": 154,
+    "FAST": 172,
+    "FEDWIRE": 58,
+    "CASH_USD": 53,
+    "CASH_SGD": 14
+  }
+}
