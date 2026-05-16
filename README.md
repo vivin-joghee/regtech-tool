@@ -36,8 +36,6 @@ The web application is the simplest entry point — open it in any modern browse
 | `Task3_G2505378K_SeniorManagement_Deck.pdf` | Slide deck |
 | `Task3_G2505378K_SeniorManagement_Pitch.m4a` | Senior Management Pitch |
 
-> The submission consists of five files delivered separately to the professor: `Task1_SelectionAndResearch.docx`, `Task2_ValuesAudit.docx`, `Task3_OnePageSummary.docx`, `Task3_SeniorManagementDeck.pptx`, and an `.m4a` narration of the slide deck. `Task3_Architecture.md` is kept in this repository because it documents the implemented system itself.
-
 ---
 
 ## What the tool does
