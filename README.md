@@ -32,7 +32,6 @@ The web application is the simplest entry point — open it in any modern browse
 |---|---|
 | `Task1_SelectionAndResearch.docx` | Entity selection (Standard Chartered) and US ↔ Singapore regulatory divergence analysis |
 | `Task2_ValuesAudit.docx` | Hypothetical company persona (Strait Compliance Pte. Ltd.) and four-question values audit |
-| `Task3_Architecture.md` (in this repository) | Detailed architecture and design rationale for the prototype |
 | `Task3_OnePageSummary.docx` | One-page summary for Task 3 |
 | `Task3_SeniorManagementDeck.pdf` | Slide deck |
 | `Task3_SeniorManagement_Pitch.m4a` | Senior Management Pitch |
