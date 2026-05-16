@@ -122,6 +122,12 @@ A guiding rule of this project: **no rule is encoded from memory**. Every regula
 
 ---
 
+## Collaborators (student co-work disclosure)
+
+For the data design portion of this project I worked with **Jagan Augustine**, a fellow NTU student who also works at the Singapore Exchange (SGX). His day-job familiarity with realistic transaction patterns and counterparty risk indicators helped me pressure-test the synthetic scenario design — particularly the structuring, rapid-movement, and cross-border categories — so the 1,000-transaction corpus reflects patterns a real reviewer would recognise rather than purely textbook constructions. No SGX data or internal materials were used; the collaboration was on scenario *plausibility*, not source material.
+
+---
+
 ## Acknowledgements and AI-use disclosure
 
 This is a collaborative effort. Domain expertise, source selection, regulatory verification, and final accountability for the submission are mine. The build, deployment, and document production were materially accelerated by AI tools, used under my direction and reviewed by me at every checkpoint. The split is recorded here so the assessor can weigh each contribution accurately.
