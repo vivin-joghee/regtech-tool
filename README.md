@@ -34,7 +34,7 @@ The web application is the simplest entry point — open it in any modern browse
 | `Task2_ValuesAudit.docx` / `.md` | Hypothetical company persona (Strait Compliance Pte. Ltd.) and four-question values audit |
 | `Task3_Architecture.md` (in this repository) | Detailed architecture and design rationale for the prototype |
 | `Task3_OnePageSummary.docx` | One-page summary for Task 3 |
-| `Task3_SeniorManagementDeck.pptx` | Slide deck |
+| `Task3_SeniorManagementDeck.pdf` | Slide deck |
 
 > The submission consists of five files delivered separately to the professor: `Task1_SelectionAndResearch.docx`, `Task2_ValuesAudit.docx`, `Task3_OnePageSummary.docx`, `Task3_SeniorManagementDeck.pptx`, and an `.mp3` narration of the slide deck. `Task3_Architecture.md` is kept in this repository because it documents the implemented system itself.
 
